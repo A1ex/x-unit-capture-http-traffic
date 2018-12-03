@@ -47,11 +47,12 @@ namespace x_unit_capture_http_traffic_1
                 HttpProxy = "http://localhost:18917",
                 SslProxy = "http://localhost:18917",
                 FtpProxy = "http://localhost:18917"
-            };
+            };            
             var options = new ChromeOptions
             {
-                Proxy = proxy,
+                Proxy = proxy
             };
+            options.AddAdditionalCapability("useAutomationExtension", false);
             _driver = new ChromeDriver(options);
             _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(180);
             _driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(180);
